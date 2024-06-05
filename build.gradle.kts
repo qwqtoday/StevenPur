@@ -62,7 +62,7 @@ dependencies {
 }
 
 paperweight {
-    serverProject = project(":tentacles-server")
+    serverProject = project(":stevenpur-server")
 
     remapRepo = paperMavenPublicUrl
     decompileRepo = paperMavenPublicUrl
@@ -75,10 +75,10 @@ paperweight {
             baseName("Purpur")
 
             apiPatchDir = layout.projectDirectory.dir("patches/api")
-            apiOutputDir = layout.projectDirectory.dir("Tentacles-API")
+            apiOutputDir = layout.projectDirectory.dir("StevenPur-API")
 
             serverPatchDir = layout.projectDirectory.dir("patches/server")
-            serverOutputDir = layout.projectDirectory.dir("Tentacles-Server")
+            serverOutputDir = layout.projectDirectory.dir("StevenPur-Server")
         }
 
         patchTasks.register("generatedApi") {
@@ -103,7 +103,7 @@ allprojects {
     publishing {
         repositories {
             maven("https://repo.purpurmc.org/snapshots") {
-                name = "tentacles"
+                name = "stevenpur"
                 credentials(PasswordCredentials::class)
             }
         }

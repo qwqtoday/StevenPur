@@ -5,19 +5,19 @@ Subject: [PATCH] Rebrand
 
 
 diff --git a/src/main/java/io/papermc/paper/ServerBuildInfo.java b/src/main/java/io/papermc/paper/ServerBuildInfo.java
-index 7107eabf02d9d9b69d97c978ba421ad52031ec3f..376da865092e49fc3f742883c912f80e4742576d 100644
+index 7107eabf02d9d9b69d97c978ba421ad52031ec3f..7369179838293141b1fb981cc762e3ffac18e3c3 100644
 --- a/src/main/java/io/papermc/paper/ServerBuildInfo.java
 +++ b/src/main/java/io/papermc/paper/ServerBuildInfo.java
 @@ -25,6 +25,13 @@ public interface ServerBuildInfo {
      Key BRAND_PURPUR_ID = Key.key("purpurmc", "purpur");
      // Purpur end
  
-+    // Tentacles start
++    // StevenPur start
 +    /**
-+     * The brand id for Tentacles.
++     * The brand id for StevenPur.
 +     */
-+    Key BRAND_TENTACLES_ID = Key.key("tentaclesmc", "tentacles");
-+    // Tentacles end
++    Key BRAND_STEVENPUR_ID = Key.key("stevenpurmc", "stevenpur");
++    // StevenPur end
 +
      /**
       * Gets the {@code ServerBuildInfo}.
