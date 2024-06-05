@@ -1,19 +1,44 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: qwqtoday <lukas.leung@hotmail.com>
-Date: Wed, 5 Jun 2024 15:25:05 +0800
+Date: Wed, 5 Jun 2024 16:00:51 +0800
 Subject: [PATCH] Relocate end portal destination
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index 5c56dfd9970bfdd14a2c20c030a1f4608b9a6214..d8f8312f994a97ee76e7c6afd27c99d4d8b3e194 100644
+index 5c56dfd9970bfdd14a2c20c030a1f4608b9a6214..bb320d0026057f82a63730837ab56d7e05050673 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
-@@ -3897,7 +3897,7 @@ public abstract class Entity implements SyncedDataHolder, Nameable, EntityAccess
+@@ -8,16 +8,8 @@ import com.google.common.collect.UnmodifiableIterator;
+ import com.mojang.logging.LogUtils;
+ import it.unimi.dsi.fastutil.objects.Object2DoubleArrayMap;
+ import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
+-import java.util.Arrays;
+-import java.util.Comparator;
+-import java.util.HashSet;
+-import java.util.Iterator;
+-import java.util.List;
+-import java.util.Locale;
+-import java.util.Objects;
+-import java.util.Optional;
+-import java.util.Set;
+-import java.util.UUID;
++
++import java.util.*;
+ import java.util.concurrent.atomic.AtomicInteger;
+ import java.util.function.BiConsumer;
+ import java.util.function.Predicate;
+@@ -3897,7 +3889,13 @@ public abstract class Entity implements SyncedDataHolder, Nameable, EntityAccess
                  }).orElse(null); // CraftBukkit - decompile error
              }
          } else {
 -            BlockPos blockposition1 = flag1 ? ServerLevel.END_SPAWN_POINT : destination.getSharedSpawnPos();
-+            BlockPos blockposition1 = new BlockPos(this.getBlockX(), this.getBlockY(), this.getBlockZ());
++            int bx = this.getBlockX() >> 6;
++            int bz = this.getBlockZ() >> 6;
++            Random random = new Random(bx+bz);
++            int rx = random.nextInt(40);
++            int rz = random.nextInt(40);
++
++            BlockPos blockposition1 = new BlockPos((bx << 6) + rx, this.getBlockY(), (bz << 6) + rz);
  
              destination.getChunkSource().addRegionTicket(TicketType.PORTAL, new ChunkPos(blockposition1), 3, blockposition1);
              int i;
