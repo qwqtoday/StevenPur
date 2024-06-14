@@ -5,7 +5,7 @@ Subject: [PATCH] Relocate end portal destination
 
 
 diff --git a/src/main/java/net/minecraft/world/entity/Entity.java b/src/main/java/net/minecraft/world/entity/Entity.java
-index 5c56dfd9970bfdd14a2c20c030a1f4608b9a6214..bb320d0026057f82a63730837ab56d7e05050673 100644
+index 5c56dfd9970bfdd14a2c20c030a1f4608b9a6214..2a283a0c26cbbc1e54ea6d728ae6e03f5f63c1a8 100644
 --- a/src/main/java/net/minecraft/world/entity/Entity.java
 +++ b/src/main/java/net/minecraft/world/entity/Entity.java
 @@ -8,16 +8,8 @@ import com.google.common.collect.UnmodifiableIterator;
@@ -35,8 +35,8 @@ index 5c56dfd9970bfdd14a2c20c030a1f4608b9a6214..bb320d0026057f82a63730837ab56d7e
 +            int bx = this.getBlockX() >> 6;
 +            int bz = this.getBlockZ() >> 6;
 +            Random random = new Random(bx+bz);
-+            int rx = random.nextInt(40);
-+            int rz = random.nextInt(40);
++            int rx = random.nextInt(40) + 12;
++            int rz = random.nextInt(40) + 12;
 +
 +            BlockPos blockposition1 = new BlockPos((bx << 6) + rx, this.getBlockY(), (bz << 6) + rz);
  
